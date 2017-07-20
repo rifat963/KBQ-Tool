@@ -176,7 +176,11 @@ CompletenessMeasure_property_with_issues<-function(propertylist){
     # st<-propertylist
     # data<-distinct_entity(st)
     Release=unique(st$Release)
+    
+    print("####")
     print(Release)
+    print("####")
+    
     lastDep=st[st$Release==Release[length(Release)],]
     # print(lastDep)
     
@@ -275,7 +279,12 @@ Percentage_of_CompletenessMeasure<-function(propertylist){
     
     st<-total_count(propertylist)
     # data<-distinct_entity(st)
+    
     Release=unique(st$Release)
+  
+    
+    
+    
     lastDep=st[st$Release==Release[length(Release)],]
     # print(lastDep)
     
@@ -302,14 +311,21 @@ Percentage_of_CompletenessMeasure<-function(propertylist){
   else{# Measure with indexed data where we set indexed = 1
     
     Release=unique(propertylist$Release)
+    
+    
+    print("#####")
+    print(Release)
+    print("#####")
+    
     st=tail(as.character(Release), n=2)
     st<-data.frame(v=st)
     dt<-mixedsort(st$v)
+
     
-    lastDep=propertylist[propertylist$Release==dt[length(dt)],]
+    lastDep=propertylist[propertylist$Release=="2016-04",]#dt[length(dt)],]
     # print(lastDep)
     
-    prevDep=propertylist[propertylist$Release==dt[length(dt)-1],]
+    prevDep=propertylist[propertylist$Release=="2015-10",]#dt[length(dt)-1],]
     
     total<-rbind(lastDep,prevDep)
     
